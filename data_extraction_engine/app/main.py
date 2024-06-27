@@ -60,7 +60,7 @@ async def query_data_perview(db: Session = Depends(get_db)):
     row_data = [dict(row) for row in rows]  # Convert SQLAlchemy row objects to dictionaries
     return JSONResponse(content={'status': 'success', 'results': row_data})
 
-if __name__ == '__main__':
-    import uvicorn
-    uvicorn.run(app, host='0.0.0.0', port=8000)
+# if __name__ == '__main__':
+#     import uvicorn
+#     uvicorn.run(app, host='0.0.0.0', port=8000)
 
