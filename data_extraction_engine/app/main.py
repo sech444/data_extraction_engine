@@ -79,8 +79,8 @@ async def query_data(filing_number: str = None, filing_date: str = None, rcs_num
     return JSONResponse(content={"status": "success", "results": [result.to_dict() for result in results]})
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # import uvicorn
+    # uvicorn.run(app, host="0.0.0.0", port=8000)
 
 
 # from fastapi import FastAPI, Depends, File, UploadFile, HTTPException
