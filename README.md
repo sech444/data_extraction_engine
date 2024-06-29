@@ -27,78 +27,21 @@ poetry shell
 uvicorn data_extraction_engine.app.main:app --reload # data_extraction_engine
 # data_extraction_engine
 
-# this is the pdf format we are working with
+User Avatar
+ Some tips for the project:
 
-NOTE: In 2A/2B forms,
-number after dot
-indicates number of
-managers filing is made
-for. so 11.1 is details of
-manager #1, 11.2 would
-be for manager #2 etc
+If you look into any of the documents, page 1 will contain a table that indicates what type of filings and subsequently datapoints (DP’s) you can expect in the document.
 
-in the new form, there is a
-box to determine what
-kind of manager this is.
-physical person
-(Personne physique) or
-legal entity (Perso
+So it makes sense to develop a modular approach per DP group per Section.
 
+Each section is marked with the number on the left. Position of the section may change, but DP position RELATIVE TO SECTION number and some anchors will always be the same.
 
+So we can then approach the situation as follows:
 
-NOTE: In 2A/2B forms,
-number after dot
-indicates number of
-managers filing is made
-for. so 11.1 is details of
-manager #1, 11.2 would
-be for manager #2 etc.
-DP_049
-DP_010
-NOTE: Managers/Directors can be either
-private individuals (personne physique) or
-legal entities (person morale). In case of S.A.
-or S.E. (legal types of the entities), on top of
-management, there can be one permanent
-representative (same director from the
-Board). Hence why the section is so long
-FYI
-Board: 2+ Managers/Directors
-Director: S.A. or S.E.
-Manager: all other legal entity types
-DP_011
-in the new form, there is a
-box to determine what
-kind of manager this is.
-physical person
-(Personne physique) or
-legal entity (Personne
-morale)
-DP_012
-DP_013
-DP_014
-DP_015
-DP_016
-DP_017
-DP_018
-DP_019
-DP_020
-DP_021
-DP_022
-DP_023
-DP_024
-DP_025
-DP_026
-DP_027
-
-DP_049
-
-Type something
-
-NOTE: the way this section works is as
-follows. Manager/Director is appointed either
-till the end of time, or until defined date. Date
-can be either specific (like 01/01/2028) OR
-the date of next AGM to be held (in this case
-2014). When recording data in our DB, we
-have to take this into consideration
+1/ fix rotation, zoom, enhance quality
+2/ identify what kind of filings do we expect in the document (page 1 and tick boxes)
+3/ locate section based on tick boxes
+4/ apply template / read section to extract DP's
+To speed things up, we can also consider using “masks” that read only sections where DP’s are expected, based on the section number. This will increase the reading time significantly.
+Sending sample for reference.
+But at the end you are free to choose your approach 
